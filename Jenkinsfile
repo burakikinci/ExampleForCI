@@ -1,14 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Print Hello') {
+                stage('Checkout') {
             steps {
-                echo("Hello World")
-            }
-        }
-        stage('Checkout') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/burakikinci/ExampleForCI.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/burakikinci/ExampleForCI.git']]])
             }
         }
         stage('Install Dependencies') {
